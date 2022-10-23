@@ -2,6 +2,7 @@ import abstracts.GameCalculator;
 import abstracts.WomanGameCalculator;
 import db.CustomerManager;
 import db.OracleDbManager;
+import innerClass.DatabaseHelper;
 import interfaces.CustomerManagerwithInterfaces;
 import interfaces.ICustomerDal;
 import interfaces.MySqlDao;
@@ -44,6 +45,12 @@ public class Main {
         ps.price = 10.0;
         ps.name = "tablet";
         pm.add(ps);
+        //inner class yapısı
+        //best practice önermiyor
+        //bir method 1 iş yapacak yani
+        // çok kullanılmıyor
         ProductValidator.BaskaClass.bos();
+        DatabaseHelper.Crud.delete();
+        DatabaseHelper.Crud.Connection.createConnection();
     }
 }
