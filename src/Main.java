@@ -27,8 +27,9 @@ public class Main {
         customerDal.add();*/
         //interface devam bağımlı hale geldi değer vermeden çalışmaz
         // ama bir şeye değil
-        CustomerManagerwithInterfaces cmwI = new CustomerManagerwithInterfaces(new MySqlDao());
-        cmwI.add();
+       /* CustomerManagerwithInterfaces cmwI = new CustomerManagerwithInterfaces(new MySqlDao());
+        cmwI.add();*/
+
 
     }
 }
