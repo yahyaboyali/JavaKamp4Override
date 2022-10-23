@@ -6,6 +6,9 @@ import interfaces.CustomerManagerwithInterfaces;
 import interfaces.ICustomerDal;
 import interfaces.MySqlDao;
 import interfaces.OracleDao;
+import statik.ProductManagerStatic;
+import statik.ProductStatic;
+import statik.ProductValidator;
 
 public class Main {
     public static void main(String[] args) {
@@ -29,7 +32,18 @@ public class Main {
         // ama bir şeye değil
        /* CustomerManagerwithInterfaces cmwI = new CustomerManagerwithInterfaces(new MySqlDao());
         cmwI.add();*/
-
-
+        //STATİK YAPILAR
+        //statik olarak 1 kere oluşuyor
+        // tüm kullanıcılar ortak kullanır
+        // uygulama durana kadar bellekten atılmıyor bu statik
+        // data taşınsa diğer kullanıcılara da o data geçiyor
+        // kullan bırak araçlar statik kullanılabliyor
+        ProductManagerStatic pm = new ProductManagerStatic();
+        ProductStatic ps = new ProductStatic();
+        ps.id = 1;
+        ps.price = 10.0;
+        ps.name = "tablet";
+        pm.add(ps);
+        ProductValidator.BaskaClass.bos();
     }
 }
