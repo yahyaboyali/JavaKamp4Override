@@ -7,6 +7,9 @@ import interfaces.CustomerManagerwithInterfaces;
 import interfaces.ICustomerDal;
 import interfaces.MySqlDao;
 import interfaces.OracleDao;
+import javakamp3Katmanlimimari.bussiness.ProductKatmanliManager;
+import javakamp3Katmanlimimari.dataAccess.JdbcProductDao;
+import javakamp3Katmanlimimari.entities.ProductKatmanli;
 import statik.ProductManagerStatic;
 import statik.ProductStatic;
 import statik.ProductValidator;
@@ -15,7 +18,7 @@ import youtubeEgitimOOP.CustomerYoutube;
 import youtubeEgitimOOP.CustomerYoutubeManager;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
       /* BaseKrediManager[] krediManagers = new BaseKrediManager[]
                 {new OgretmenKrediManager(),new TarimKrediManager()
                 ,new OgrenciKrediManager()};
@@ -55,6 +58,7 @@ public class Main {
         ProductValidator.BaskaClass.bos();
         DatabaseHelper.Crud.delete();
         DatabaseHelper.Crud.Connection.createConnection();*/
+      /*
         CreditManager cm = new CreditManager();
         cm.calculate();
         CustomerYoutube cmy = new CustomerYoutube();
@@ -65,5 +69,14 @@ public class Main {
                 "interfaceler iş yapan sınıfların " +
                 "operasyonlarını imza seviyesinde " +
                 "yazılarak bağımlılığı sağlayan yapı");
+       */
+      // katmanlı mimari geçiş
+        ProductKatmanli productKatmanli
+                = new ProductKatmanli(1,"iphone",10);
+        ProductKatmanliManager productKatmanliManager =
+                new ProductKatmanliManager(new JdbcProductDao());
+        productKatmanliManager.add(productKatmanli);
+
+
     }
 }
