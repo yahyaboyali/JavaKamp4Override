@@ -8,14 +8,21 @@ import interfaces.ICustomerDal;
 import interfaces.MySqlDao;
 import interfaces.OracleDao;
 import javakamp3Katmanlimimari.bussiness.ProductKatmanliManager;
+import javakamp3Katmanlimimari.core.logging.DbLogger;
+import javakamp3Katmanlimimari.core.logging.Logger;
+import javakamp3Katmanlimimari.core.logging.MailLogger;
 import javakamp3Katmanlimimari.dataAccess.JdbcProductDao;
 import javakamp3Katmanlimimari.entities.ProductKatmanli;
 import statik.ProductManagerStatic;
 import statik.ProductStatic;
 import statik.ProductValidator;
+import sun.rmi.runtime.Log;
 import youtubeEgitimOOP.CreditManager;
 import youtubeEgitimOOP.CustomerYoutube;
 import youtubeEgitimOOP.CustomerYoutubeManager;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -71,10 +78,13 @@ public class Main {
                 "yazılarak bağımlılığı sağlayan yapı");
        */
       // katmanlı mimari geçiş
+        List<Logger> loggers = new ArrayList<>();
+        loggers.add(new DbLogger());
+        loggers.add(new MailLogger());
         ProductKatmanli productKatmanli
                 = new ProductKatmanli(1,"iphone",10);
         ProductKatmanliManager productKatmanliManager =
-                new ProductKatmanliManager(new JdbcProductDao());
+                new ProductKatmanliManager(new JdbcProductDao(),loggers);
         productKatmanliManager.add(productKatmanli);
 
 

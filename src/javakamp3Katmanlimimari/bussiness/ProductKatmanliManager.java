@@ -1,14 +1,18 @@
 package javakamp3Katmanlimimari.bussiness;
 
+import javakamp3Katmanlimimari.core.logging.Logger;
 import javakamp3Katmanlimimari.dataAccess.IProductDao;
 import javakamp3Katmanlimimari.dataAccess.JdbcProductDao;
 import javakamp3Katmanlimimari.entities.ProductKatmanli;
 
-public class ProductKatmanliManager {
-    IProductDao productDao;
+import java.util.List;
 
-    public ProductKatmanliManager(IProductDao productDao) {
+public class ProductKatmanliManager {
+    private IProductDao productDao;
+    private List<Logger> loggers;
+    public ProductKatmanliManager(IProductDao productDao, List<Logger> loggers) {
         this.productDao = productDao;
+        this.loggers = loggers;
         //Loose Coupuling
     }
 
@@ -19,7 +23,9 @@ public class ProductKatmanliManager {
             //throw yazınca üste ekleme yaptık. bu kullanılırsa
             //hata alabilirsin diye
         }
-        JdbcProductDao productDao = new JdbcProductDao();
         productDao.add(productKatmanli);
+        for (Logger logger: loggers) {
+            logger.log(productKatmanli.getName());
+        }
     }
 }
